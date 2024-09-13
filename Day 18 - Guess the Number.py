@@ -15,7 +15,7 @@ while True:
   elif guess < secretNumber and guess > 0:
     round += 1
     print("Too low! Try again!")
-  elif guess > secretNumber and guess < 1000000:
+  elif guess > secretNumber and guess <= 1000000:
     round += 1
     print("Too high! Try again!")
   else:
