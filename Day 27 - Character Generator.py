@@ -33,8 +33,8 @@ def char_strength():
 '''
 With the subroutine rollDice:
 def char_strength():
-  healthDice = ((rollDice(6) * rollDice(12) / 2)) + 12
-  return healthDice
+  strengthDice = ((rollDice(6) * rollDice(12) / 2)) + 12
+  return strengthDice
 '''
 
 while True:
