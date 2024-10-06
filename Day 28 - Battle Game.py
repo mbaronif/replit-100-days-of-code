@@ -59,23 +59,23 @@ while True:
   print()
 
   damage = abs(player1strength - player2strength) + 1
-  blow = 0 # Rounds starts in 0
+  round = 0 # Rounds starts in 0
   
   while True:
     player1_dice = rollDice(6)
     player2_dice = rollDice(6)
 
-    blow += 1
+    round += 1
 
     # Checks dices for players' damage
     if player1_dice > player2_dice:
-      print(player1 + " wins the first blow")
+      print(player1 + " wins this round")
       print(player2 + " takes a hit, with", damage, "damage")
       player2health -= damage
       print()
       time.sleep(1)
     elif player2_dice > player1_dice:
-      print(player2 + " wins the first blow")
+      print(player2 + " wins this round")
       print(player1 + " takes a hit, with", damage, "damage")
       player1health -= damage
       print()
@@ -98,12 +98,12 @@ while True:
     if player1health <= 0:
       print("Oh no", player1, "has died!")
       print()
-      print(player2, "destroyed", player1, "in", blow, "rounds!")
+      print(player2, "destroyed", player1, "in", round, "rounds!")
       break
     elif player2health <= 0:
       print("Oh no", player2, "has died!")
       print()
-      print(player1, "destroyed", player2, "in", blow, "rounds!")
+      print(player1, "destroyed", player2, "in", round, "rounds!")
       break
     else:
       print("And they're both standing for the next round!")
