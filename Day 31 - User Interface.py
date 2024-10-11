@@ -1,25 +1,23 @@
 #Color rules
-def colorRule(color, word):
-def colorRule(color, word):
+def colorRule(color):
   if (color == "yellow"):
-    print("\033[1;33m", word, end="") #can be simplified to return("\033[1;33m")
+    return("\033[1;33m") #can be simplified to return("\033[1;33m")
   elif (color == "green"):
-    print("\033[0;32m", word, end="") #can be simplified to return("\033[0;32m")
+    return("\033[0;32m") #can be simplified to return("\033[0;32m")
   elif (color == "red"):
-    print("\033[0;31m", word, end="") #can be simplified to return("\033[0;31m")
+    return("\033[0;31m") #can be simplified to return("\033[0;31m")
   elif (color == "blue"):
-    print("\033[0;34m", word, end="") #can be simplified to return("\033[0;34m")
+    return("\033[0;34m") #can be simplified to return("\033[0;34m")
   elif (color == "light_purple"):
-    print("\033[1;35m", word, end="") #can be simplified to return("\033[1;35m")
+    return("\033[1;35m") #can be simplified to return("\033[1;35m")
+  elif (color == "white"):
+    return("\033[0m") #can be simplified to return("\033[1;35m")
   else:
-    print("\033[0m", word, end="")
+    return("\033[0m")
 
 
 #Interface 1 - variables
-equalSign = "="
-title = "Music App"
-song = "🔥▶️ Radio Gaga"
-band = "Queen"
+title = f"{colorRule('red')}={colorRule('white')}={colorRule('blue')}={colorRule('yellow')}Music App{colorRule('blue')}={colorRule('white')}={colorRule('red')}="
 prev = "PREV"
 next = "NEXT"
 pause = "PAUSE"
@@ -35,43 +33,26 @@ username = "Username:"
 password = "Password:"
 
 #Interface 1 - print
-colorRule("red", f"{equalSign: >11}")
-colorRule("reset", "=")
-colorRule("blue", f"{equalSign}")
-colorRule("reset", "")
-colorRule("yellow", f"{title}")
-colorRule("reset", "")
-colorRule("blue", f"{equalSign}")
-colorRule("reset", "=")
-colorRule("red", f"{equalSign}")
-colorRule("reset", "")
+print(f"            {title: ^50}")
+print(f"🔥▶️\t{colorRule('white')}Radio Gaga")
+print(f"\t{colorRule('yellow')}Queen")
 print()
 print()
-print(f"{song}")
-colorRule("yellow", f"{band: ^11}")
-colorRule("reset", "\n")
-print()
-print()
-print(f"{prev}")
-colorRule("green", f"{next: ^11}")
-colorRule("reset", "\n")
-colorRule("light_purple", f"{pause: ^21}")
-colorRule("reset", "\n")
+print(f"{colorRule('white')}{prev: <20}")
+print(f"{colorRule('green')}{next: ^20}")
+print(f"{colorRule('light_purple')}{pause: >20}")
 print()
 print()
 
 #Interface 2 - print
-print(f"{welcome: ^50}")
-colorRule("blue", f"{armbook: ^50}")
-colorRule("reset", "\n")
+print(f"{colorRule('white')}{welcome: ^50}")
+print(f"{colorRule('blue')}{armbook: ^50}")
 print( )
-colorRule("yellow", f"{notaRip1: >43}\n")
-colorRule("yellow", f"{notaRip2: >43}\n")
-colorRule("yellow", f"{notaRip3: >43}")
-colorRule("reset", "\n")
+print(f"{colorRule('yellow')}{notaRip1: >50}")
+print(f"{colorRule('yellow')}{notaRip2: >50}")
+print(f"{colorRule('yellow')}{notaRip3: >50}")
 print()
-colorRule("red", f"{honest: ^50}")
-colorRule("reset", "\n")
+print(f"{colorRule('red')}{honest: ^50}")
 print()
-print(f"{username: ^50}")
-print(f"{username: ^50}")
+print(f"{colorRule('white')}{username: ^50}")
+print(f"{colorRule('white')}{password: ^50}")
