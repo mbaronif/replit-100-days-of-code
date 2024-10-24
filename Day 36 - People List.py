@@ -14,6 +14,8 @@ while True: # Prompts the input requests
 
     if fullName not in uniqueList: # Checks the input name and surname to prevent duplicates. If the name is repeted, it'll not be added.
         uniqueList.append(fullName)
+    else:
+        print("ERROR: Duplicate name")
     nameList()
 
     if not firstName or not lastName: # Just a safe measure to avoid infinite loop.
