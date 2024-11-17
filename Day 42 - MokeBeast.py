@@ -17,12 +17,31 @@ if mokeBeast["Type"] == "Fire":
 elif mokeBeast["Type"] == "Water":
     typeColor = "\033[0;34m" #Blue
 elif mokeBeast["Type"] == "Earth":
-    typeColor = "\033[0;32m" #White
+    typeColor = "\033[0;32m" #Green
 elif mokeBeast["Type"] == "Air":
-    typeColor = "\033[1;37m" #Green
+    typeColor = "\033[1;37m" #White
 elif mokeBeast["Type"] == "Spirit":
     typeColor ="\033[0;35m" #Purple
 
 #Prints all entries in the Type respective color
 for name, value in mokeBeast.items():
     print(f"{typeColor}{name}: {value}")
+
+
+"""
+ALTERNATIVE
+#No need for the typeColor variable with this solution.
+if mokeBeast["Type"] == "Fire":
+    print("\033[0;31m", end = "") #Red
+elif mokeBeast["Type"] == "Water":
+    print("\033[0;34m", end = "") #Blue
+elif mokeBeast["Type"] == "Earth":
+    print ("\033[0;32m", end = "") #Green
+elif mokeBeast["Type"] == "Air":
+    print ("\033[1;37m", end = "") #White
+elif mokeBeast["Type"] == "Spirit":
+    print = ("\033[0;35m", end = "") #Purple
+
+for name, value in mokeBeast.items():
+    print(f"{name: <15}: {value}") #space added to align the input
+"""
