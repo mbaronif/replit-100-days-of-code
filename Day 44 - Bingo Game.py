@@ -26,8 +26,14 @@ while True:
     print()
     prettyPrint()
 
-    #If I don't convert the input into a integer, the comparison/check doesn't work.
-    userNumber = int(input("What number was called? "))
+     #try/except prevents any error message in case of a non integer input
+    try:
+        #If I don't convert the input into a integer, the comparison/check doesn't work.
+        userNumber = int(input("What number was called? "))
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+        
     #This [:] creates a copy of the bingo card, to avoid modifying the original one
     for row in bingo[:]:
         #Checks each row for the userNumber
