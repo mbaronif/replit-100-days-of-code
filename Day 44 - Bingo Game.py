@@ -30,14 +30,17 @@ while True:
     userNumber = int(input("What number was called? "))
     #This [:] creates a copy of the bingo card, to avoid modifying the original one
     for row in bingo[:]:
+        #Checks each row for the userNumber
         if userNumber in row:
-            bingo.remove(row)
-
-          
-            #Just thinking:
-            #bingo.remove("userNumber")
-            #bingo.append("X")
-
+            #Finds the index of userNumber
+            bingoIndex = row.index(userNumber)
+            #Replaces the number with 'X'
+            row[bingoIndex] = "X"
+    #This will count all ocurrences of 'X' in the bingo card.
+    totalX = sum(row.count("X") for row in bingo)
+    if totalX == 8:
+        print("Win! Game Over")
+        break
 
 
 #Bug: I couldn't eliminate the last line after the last column and line
