@@ -45,10 +45,7 @@ while True:
         task_name = input("What do you want to add?\n").strip().capitalize()
         
         if any(existing_task["Task"] == task_name for existing_task in to_do_list): # Check if the task already exists in the list
-            retryOption()
-            #print()
-            #print("Sorry, the task is already in the list.")            
-            #retryOption = input("Do you want to add another task? (yes/no)\n").strip().lower() # If the user still wants to add a new task to the list
+            retryOption() # If the user still wants to add a new task to the list
             
             if retryOption == "yes":
                 addAction() #Returns to the Add menu.
