@@ -16,5 +16,5 @@ while True:
     mp = int(input("MP: "))
     mokeBeast[name] = {"Type": type, "HP": hp, "MP": mp}
     print()
-    #Prints all entries in the Type respective color
+ 
     prettyPrint()
