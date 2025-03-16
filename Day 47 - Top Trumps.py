@@ -71,16 +71,3 @@ while True:
     else:
         print("It's a draw!")
     print()
-
-
-
-
-
-
-"""    name = input("Enter the name of the player: ")
-    if name == "":
-        break
-    topTrumps[name] = {}
-    topTrumps[name]["Speed"] = int(input("Enter the speed of the player: "))
-    topTrumps[name]["Strength"] = int(input("Enter the strength of the player: "))
-    topTrumps[name]["Skill"] = int(input("Enter the skill of the player: "))"""
