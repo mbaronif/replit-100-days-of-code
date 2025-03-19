@@ -1,7 +1,7 @@
-f = open("hi.score", 'a+')
+f = open("high.score", 'a+')
 
 while True:
-    initials = input("Enter your initials: ").upper()
+    initials = input("Enter your initials: ").upper()[:3]
     score = input("Enter your score: ")
     f.write(f"{initials} {score}\n")
     print("Score saved!")
