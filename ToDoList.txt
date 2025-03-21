@@ -1,1 +1,1 @@
-['Buy apples', 'Fix washing machine']
+['Buy apples', 'Study for the test', 'Do the laundry']
