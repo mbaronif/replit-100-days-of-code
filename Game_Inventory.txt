@@ -1,1 +1,1 @@
-['Potion', 'Potion', 'Sword']
+['Potion', 'Sword', 'Sword']

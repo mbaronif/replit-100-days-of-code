@@ -2,6 +2,7 @@ import os, time
 
 gameInventory = []
 
+
 try:
     f = open("Game_Inventory.txt", "r")
     gameInventory = eval(f.read())
@@ -18,7 +19,7 @@ def gameMenu():
 
 def addItem():
     print("INVENTORY\n\n==========\n\n")
-    itemName = input("Item to add > ").capitalize()
+    itemName = input("Item to add > ").strip().capitalize()
     gameInventory.append(itemName)
     print("Item added!\n")
     time.sleep(2)
@@ -27,36 +28,32 @@ def addItem():
 def viewItem():
     print("INVENTORY\n\n==========\n\n")
     print("Items in Inventory\n")
-    for item in gameInventory:
-        #itemQty = gameInventory.count(item)
-        print(item, gameInventory.count(item))
+    for item in set(gameInventory): #Using set to remove duplicates.
+        print(item, gameInventory.count(item)) #Using count to count the number of times an item appears in the list.
+        #It still allows the program to add and remove items from the list.
     print()
     time.sleep(2)
     os.system("clear")
 
 def removeItem():
     print("INVENTORY\n\n==========\n\n")
-    itemName = input("Item to remove > ").capitalize()
-    if itemName in gameInventory:
-        gameInventory.remove(itemName)
-        print("Item removed!\n")
-        time.sleep(2)
-        os.system("clear")
-    else:
-        print("Item not found!\n")
-        tryAgain = input("Do you want to try again? (Yes/No) > ")
-        if tryAgain.strip().capitalize() == "yes":
-            itemName = input("Item to remove > ").capitalize()
-            if itemName in gameInventory:
-                gameInventory.remove(itemName)
-                print("Item removed!\n")
+    while True:
+        itemName = input("Item to remove > ").strip().capitalize()
+        if itemName in gameInventory:
+            gameInventory.remove(itemName)
+            print("Item removed!\n")
+            time.sleep(2)
+            os.system("clear")
+            break
+        else:            
+            print("Item not found!\n")
+            tryAgain = input("Do you want to try again? (Yes/No) > ").strip().capitalize()
+            if tryAgain == "Yes":
+                continue
+            else:
                 time.sleep(2)
                 os.system("clear")
-            else:
-                print("Item not found!\n")
-                time.sleep(2)
-        else:
-            pass
+                break
 
 while True:
     gameMenu()
