@@ -31,6 +31,14 @@ def viewItem():
     for item in set(gameInventory): #Using set to remove duplicates.
         print(item, gameInventory.count(item)) #Using count to count the number of times an item appears in the list.
         #It still allows the program to add and remove items from the list.
+    """
+    Alternative:
+    seen = []
+    for item in gameInventory:
+        if item not in seen:
+            print(item, gameInventory.count(item))
+            seen.append(item)        
+    """
     print()
     time.sleep(2)
     os.system("clear")
