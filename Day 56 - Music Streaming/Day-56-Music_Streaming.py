@@ -1,28 +1,30 @@
 import csv, os
 
-# Replaces the file path with a shorter variable name.
-file_path = "/Users/marianabaronifontana/Projects/replit-100-days-of-code/Day 56 - Music Streaming/TopSongs.csv"
+# Replaces the pathes of the parent folder and the file with a shorter variable name.
+parent_path = ".../Day 56 - Music Streaming/"
+file_path = os.path.join(parent_path, "TopSongs.csv")
 
-topSongs = []
-
-# Reads the CSV file.
-with open(file_path, "r") as file:
-    # Reads the CSV file using the csv module.
+# Reads the CSV file using the csv module.
+with open(file_path) as file:
     reader = csv.DictReader(file)
+
+    # Reads each line of the CSV file.
     for row in reader:
-        # Adds the song to the list.
-        #topSongs.append(f"{row['Position']} - {row['Artist']} | {row['Title']} | {row['Year']} | {row['Total']}")
-        # It should create a new location for each artist, but it didn't.
-        artist_path = os.path.join("/Users/marianabaronifontana/Projects/replit-100-days-of-code/Day 56 - Music Streaming/", row['Artist'])
-        print(artist_path)
+        artist = row['Artist']
+        title = row['Title']
 
-# Displays the full ranking of the songs.
-def fullRanking():
-    for song in topSongs:
-        print(song)
-    print()
+        # Creates a folder for each artist.
+        artist_path = os.path.join(parent_path, artist)
 
-#This is only for testing purposes.
-#fullRanking()
-
-# Creates a directory for each artist.
+        file_dir = os.listdir(parent_path)
+       # Checks if the file is empty.
+        
+        # Checks if the artist folder already exists.
+        # If not, it creates a new folder.
+        if artist not in file_dir:
+            os.mkdir(artist_path)
+        
+        # Creates a file for each song in the respective artist folder.
+        path = os.path.join(artist_path, title)
+        f = open(path, "w")
+        f.close()
