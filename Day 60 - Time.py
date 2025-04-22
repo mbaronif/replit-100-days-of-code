@@ -24,8 +24,9 @@ print()
 today = datetime.date.today()
 eventDate = datetime.date(year, month, day)
 
-amount = eventDate - today
-difference = amount.days
+amountDays = eventDate - today
+# .days extracts the number of days from the timedelta
+difference = amountDays.days
 
 if eventDate > today:
     print(f"{event} is in {difference} days. Get ready! 🤩")
