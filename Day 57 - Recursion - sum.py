@@ -4,8 +4,7 @@ def recursive_sum(n):
     if n == 1:
         print("Done!")
         # Stops the recursion whan it reaches 1
-        return 1
-    
+        return 1    
     else:
         # Adds the current number to the result of the recursive call
         return n + recursive_sum(n - 1)

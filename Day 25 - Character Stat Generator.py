@@ -33,16 +33,16 @@ import random
 
 #This function creates a random dice.
 def rollDice(sides):
-  result = random.randint(1,sides)
-  return result
+    result = random.randint(1, sides)
+    return result
 
 #This function creates 2 rolls of the previous dice and calculates
 #the health points based on the value of those 2 dices.
 def roll_6_and_8():
-  roll_6_sided_dice = rollDice(6)
-  roll_8_sided_dice = rollDice(8)
-  health = roll_6_sided_dice * roll_8_sided_dice
-  return health
+    roll_6_sided_dice = rollDice(6)
+    roll_8_sided_dice = rollDice(8)
+    hp = roll_6_sided_dice * roll_8_sided_dice
+    return hp
 
 #The game starts after the functions are created.
 print("⚔️ Character stats generator ⚔️")

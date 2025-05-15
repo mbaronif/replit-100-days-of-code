@@ -3,9 +3,9 @@ totalAttempts = 0
 
 def game():
     attempts = 0
-    # Removed this variable from the while loop.
-    # Inside it, it was generating a new random number every time.
-    # This way, it will keep the generated random number.
+    """ Removed this variable from the while loop.
+    Inside it, it was generating a new random number every time.
+    This way, it will keep the generated random number."""
     number = random.randint(1,100)
 
     while True:
