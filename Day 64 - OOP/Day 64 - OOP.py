@@ -9,7 +9,7 @@ class className:
 def __init__ (self, property1, property2, property3):
     code here
 
-    className.especies      -   returns the data stored in this class as the variable species
+    className.especies()      -   returns the data stored in this class as the variable species
     className.method()     -   calls the method stored in this class
 """
 
