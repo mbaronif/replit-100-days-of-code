@@ -1,10 +1,12 @@
-class Character:
+class Character: #Basic character
     name = None
     health = None
     mp = None #mp = magic points
 
-    def __init__(self, name, health, mp):
+    def __init__(self, name):
         self.name = name
+
+    def setStats(self, health, mp):
         self.health = health
         self.mp = mp
 
@@ -12,23 +14,29 @@ class Character:
         print(f"Name: {self.name}")
         print(f"Health: {self.health}")
         print(f"Magic Points: {self.mp}")
-
 class Player(Character):
+    lives = 3 # Initial number of lives
 
-    def __init__(self, name, health, mp, nickname, lives):
-        super().__init__(name, health, mp)
+    def __init__(self, name, nickname, lives):
+        super().__init__(name)
         self.nickname = nickname
         self.lives = lives
 
+    def isAlive(self): # Check if player is alive
+        if self.lives > 0:
+            return True
+        else:
+            return False
+    
     def characterInfo(self):
         super().characterInfo()
         print(f"Nickname: {self.nickname}")
-        print(f"Lives: {self.lives}")    
+        print(f"Lives: {self.lives}")
 
 class Enemy(Character):
 
-    def __init__(self, name, health, mp, type, strength):
-        super().__init__(name, health, mp)
+    def __init__(self, name, type, strength):
+        super().__init__(name)
         self.type = type
         self.strength = strength
 
@@ -36,11 +44,10 @@ class Enemy(Character):
         super().characterInfo()
         print(f"Type: {self.type}")
         print(f"Strength: {self.strength}")
-
 class Orc(Enemy):
 
-    def __init__(self, name, health, mp, strength, speed):
-        super().__init__(name, health, mp, "Orc", strength)
+    def __init__(self, name, strength, speed):
+        super().__init__(name, "Orc", strength)
         self.speed = speed
     
     def characterInfo(self):
@@ -50,33 +57,44 @@ class Orc(Enemy):
 class Vampire(Enemy):
     day = None
 
-    def __init__(self, name, health, mp, strength, day):
-        super().__init__(name, health, mp, "Vampire", strength)
+    def __init__(self, name, strength, day):
+        super().__init__(name, "Vampire", strength)
         self.day = day
     
+    def isDay(self): # Check if it's day or night
+        if self.day == "Day":
+            return True
+        else:
+            return False
+        
     def characterInfo(self):
         super().characterInfo()
         print(f"Day: {self.day}")
 
-player1 = Player("Cameron Harvey", 100, 50, "Cameron", 3)
+player1 = Player("Cameron Harvey", "Cameron", 3) # Class's specific info
+player1.setStats(100, 100) # Player's stats
 
-orc1 = Orc("Garzonk", 100, 60, 20, 20)
-orc2 = Orc("Wubdagog", 100, 60, 10, 20)
-orc3 = Orc("Drutha", 100, 60, 15, 20)
+orc1 = Orc("Garzonk", 60, 20)
+orc1.setStats(100, 20)
+orc2 = Orc("Wubdagog", 60, 10)
+orc2.setStats(100, 20)
+orc3 = Orc("Drutha", 60, 15)
+orc3.setStats(100, 20)
 
-vampire1 = Vampire("Sabien", 100, 80, 80, day="Night")
-vampire2 = Vampire("Griffin", 100, 80, 80, day="Day")
-
+vampire1 = Vampire("Sabien", 80, day="Night")
+vampire1.setStats(100, 80)
+vampire2 = Vampire("Griffin", 80, day="Day")
+vampire2.setStats(100, 80)
 
 player1.characterInfo()
-print(f"-----------------------")
+print("-----------------------")
 orc1.characterInfo()
-print(f"-----------------------")
+print("-----------------------")
 orc2.characterInfo()
-print(f"-----------------------")
+print("-----------------------")
 orc3.characterInfo()
-print(f"-----------------------")
+print("-----------------------")
 vampire1.characterInfo()
-print(f"-----------------------")
+print("-----------------------")
 vampire2.characterInfo()
-print(f"-----------------------")
+print("-----------------------")
