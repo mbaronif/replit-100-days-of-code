@@ -1,7 +1,7 @@
 class Character: #Basic character
     name = None
-    health = None
-    mp = None #mp = magic points
+    health = 100
+    mp = 100 #mp = magic points
 
     def __init__(self, name):
         self.name = name
@@ -15,17 +15,19 @@ class Character: #Basic character
         print(f"Health: {self.health}")
         print(f"Magic Points: {self.mp}")
 class Player(Character):
+    nickname = None
     lives = 3 # Initial number of lives
 
     def __init__(self, name, nickname, lives):
         super().__init__(name)
         self.nickname = nickname
-        self.lives = lives
 
     def isAlive(self): # Check if player is alive
         if self.lives > 0:
+            print(f"{self.nickname} is alive")
             return True
         else:
+            print(f"{self.nickname} has died")
             return False
     
     def characterInfo(self):
@@ -34,6 +36,8 @@ class Player(Character):
         print(f"Lives: {self.lives}")
 
 class Enemy(Character):
+    type = None
+    strength = None
 
     def __init__(self, name, type, strength):
         super().__init__(name)
@@ -45,6 +49,7 @@ class Enemy(Character):
         print(f"Type: {self.type}")
         print(f"Strength: {self.strength}")
 class Orc(Enemy):
+    speed = None
 
     def __init__(self, name, strength, speed):
         super().__init__(name, "Orc", strength)
@@ -63,8 +68,10 @@ class Vampire(Enemy):
     
     def isDay(self): # Check if it's day or night
         if self.day == "Day":
+            print(f"{self.name} is weak during the day")
             return True
         else:
+            print(f"{self.name} is strong during the night")
             return False
         
     def characterInfo(self):
@@ -97,4 +104,4 @@ print("-----------------------")
 vampire1.characterInfo()
 print("-----------------------")
 vampire2.characterInfo()
-print("-----------------------")
+print("-----------------------")ß
