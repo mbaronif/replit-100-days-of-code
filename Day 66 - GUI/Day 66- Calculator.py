@@ -4,8 +4,7 @@ window = tk.Tk()
 window.title("Calculator")
 window.geometry("250x200")
 
-label = 0
-
+display = 0
 
 # Command functions
 def add():
@@ -23,58 +22,60 @@ def calculate():
 
 # Number keys
 def number1():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
+    text.delete("1.0", "end")
+    display = number
 
 def number2():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number3():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number4():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number5():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number6():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number7():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number8():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number9():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 def number0():
-    global label
+    global display
     number = text.get("1.0", "end")
     number = int(number)
 
 # Display
-text = tk.Text(window, height = 1, width = 30)
-text.grid(row= 0, column=1, columnspan=4)
+text = tk.Text(window, height = 1, width = 25)
+text.grid(row=0, column=1, columnspan=4)
 
 # Buttons
 button = tk.Button(text="1", command = number1)
