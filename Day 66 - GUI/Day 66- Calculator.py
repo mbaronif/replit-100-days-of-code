@@ -21,6 +21,9 @@ def calculate():
     pass
 
 # Number keys
+"""I don't need to create a separate function for each number. I can create a single function that takes the number as an 
+argument. It'll, then, update the display with the number pressed. This way, I can avoid repeating code for each number.
+"""
 def number1():
     global display
     number = text.get("1.0", "end")
@@ -74,10 +77,16 @@ def number0():
     number = int(number)
 
 # Display
+"""Here I could use tk.Label instead. Also, I could call the text widget "display"
+instead of "text" to make it clearer.
+"""
 text = tk.Text(window, height = 1, width = 25)
 text.grid(row=0, column=1, columnspan=4)
 
 # Buttons
+""" This way would generate an error because all the buttons have the same name.
+The correct would be giving each button a different name, like button1, button2, etc.
+"""
 button = tk.Button(text="1", command = number1)
 button.grid(row=1, column=1)
 button = tk.Button(text="2", command = number2)
