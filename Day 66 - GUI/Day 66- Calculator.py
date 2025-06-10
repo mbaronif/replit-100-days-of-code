@@ -4,125 +4,108 @@ window = tk.Tk()
 window.title("Calculator")
 window.geometry("250x200")
 
-display = 0
-
-# Command functions
-def add():
-    pass
-def subtract():
-    pass
-def multiply():
-    pass
-def divide():
-    pass
-def clear():
-    pass
-def calculate():
-    pass
+answer = 0
+operator = None
 
 # Number keys
-"""I don't need to create a separate function for each number. I can create a single function that takes the number as an 
-argument. It'll, then, update the display with the number pressed. This way, I can avoid repeating code for each number.
+def typeKey(value):
+    global answer
+    answer = f"{answer}{value}"
+    answer = int(answer)  # Convert the answer to an integer
+    text["text"] = answer  # Update the display with the new answer
+"""I can create a single function that takes the number as an argument. It'll, then, update the display with the number pressed.
+This way, I can avoid repeating code for each number.
 """
-def number1():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-    text.delete("1.0", "end")
-    display = number
 
-def number2():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
+# Command functions
+def calcAnswer(thisOperator):
+    global answer, lastNumber, operator
+    # Store the current answer and reset it for the next input
+    lastNumber = answer
+    answer = 0
+    # Set the operator based on the button pressed
+    if thisOperator == "+":
+        operator = "+"
+    elif thisOperator == "-":
+        operator = "-"
+    elif thisOperator == "*":
+        operator = "*"
+    elif thisOperator == "/":
+        operator = "/"
+    text["text"] = answer  # Update the display with the new answer
 
-def number3():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
+def calculate():
+    """
+    Perform the calculation based on the selected operator.
+    The function checks which operator was selected (+, -, *, /) and performs the corresponding operation
+    using the last number entered and the current answer. If the operator is division and the current answer
+    is zero, it displays an error message to prevent division by zero.
+    """
+    global answer, lastNumber, operator
+    # Create if-else statement to handle operations when the operator is pressed.
+    if operator == "+":
+        total = lastNumber + answer
+    elif operator == "-":
+        total = lastNumber - answer
+    elif operator == "*":
+        total = lastNumber * answer
+    elif operator == "/":
+        if answer == 0:
+            text["text"] = "Error"  # Display error for division by zero
+            return
+        total = lastNumber / answer
+    answer = total  # Update the answer with the total
+    text["text"] = total  # Update the display with the total
 
-def number4():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-
-def number5():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-
-def number6():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-
-def number7():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-
-def number8():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-
-def number9():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
-
-def number0():
-    global display
-    number = text.get("1.0", "end")
-    number = int(number)
+# Clear function to reset the calculator
+def clear():
+    global answer, operator
+    text.config(text="0")  # Reset the display to 0
+    answer = 0  # Reset the answer
 
 # Display
-"""Here I could use tk.Label instead. Also, I could call the text widget "display"
-instead of "text" to make it clearer.
-"""
-text = tk.Text(window, height = 1, width = 25)
-text.grid(row=0, column=1, columnspan=4)
+text = tk.Label(text=str(answer), fg="black", bg="white", font=("Arial", 24))
+text.grid(row=0, column=1, columnspan=4)  # Use columnspan to center the display across multiple columns
 
-# Buttons
-""" This way would generate an error because all the buttons have the same name.
-The correct would be giving each button a different name, like button1, button2, etc.
-"""
-button = tk.Button(text="1", command = number1)
-button.grid(row=1, column=1)
-button = tk.Button(text="2", command = number2)
-button.grid(row=1, column=2)
-button = tk.Button(text="3", command = number3)
-button.grid(row=1, column=3)
+# Number keys
+key1 = tk.Button(text="1", command = lambda:typeKey(1))
+key1.grid(row=1, column=1)
+key2 = tk.Button(text="2", command = lambda:typeKey(2))
+key2.grid(row=1, column=2)
+key3 = tk.Button(text="3", command = lambda:typeKey(3))
+key3.grid(row=1, column=3)
 
-button = tk.Button(text="4", command = number4)
-button.grid(row=2, column=1)
-button = tk.Button(text="5", command = number5)
-button.grid(row=2, column=2)
-button = tk.Button(text="6", command = number6)
-button.grid(row=2, column=3)
+key4 = tk.Button(text="4", command = lambda:typeKey(4))
+key4.grid(row=2, column=1)
+key5 = tk.Button(text="5", command = lambda:typeKey(5))
+key5.grid(row=2, column=2)
+key6 = tk.Button(text="6", command = lambda:typeKey(6))
+key6.grid(row=2, column=3)
 
-button = tk.Button(text="7", command = number7)
-button.grid(row=3, column=1)
-button = tk.Button(text="8", command = number8)
-button.grid(row=3, column=2)
-button = tk.Button(text="9", command = number9)
-button.grid(row=3, column=3)
+key7 = tk.Button(text="7", command = lambda:typeKey(7))
+key7.grid(row=3, column=1)
+key8 = tk.Button(text="8", command = lambda:typeKey(8))
+key8.grid(row=3, column=2)
+key9 = tk.Button(text="9", command= lambda:typeKey(9))
+key9.grid(row=3, column=3)
 
-button = tk.Button(text="0", command = number0)
-button.grid(row=4, column=1)
-button = tk.Button(text="=", command = calculate)
-button.grid(row=4, column=2)
-button = tk.Button(text="AC", command = clear)
-button.grid(row=4, column=3)
+key0 = tk.Button(text="0", command = lambda:typeKey(0))
+key0.grid(row=4, column=1)
 
-button = tk.Button(text="+", command = add)
-button.grid(row=1, column=4)
-button = tk.Button(text="-", command = subtract)
-button.grid(row=2, column=4)
-button = tk.Button(text="*", command = multiply)
-button.grid(row=3, column=4)
-button = tk.Button(text="/", command = divide)
-button.grid(row=4, column=4)
+# Command keys
+equal = tk.Button(text="=", command = lambda:calculate)
+equal.grid(row=4, column=2)
+clearButton = tk.Button(text="AC", command = clear)
+clearButton.grid(row=4, column=3)
+
+plus = tk.Button(text="+", command = lambda:calcAnswer("+"))
+plus.grid(row=1, column=4)
+minus = tk.Button(text="-", command = lambda:calcAnswer("-"))
+minus.grid(row=2, column=4)
+multiply = tk.Button(text="*", command = lambda:calcAnswer("*"))
+multiply.grid(row=3, column=4)
+divide = tk.Button(text="/", command = lambda:calcAnswer("/"))
+divide.grid(row=4, column=4)
 
 
 # Starts the GUI
