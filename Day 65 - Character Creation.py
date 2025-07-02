@@ -104,4 +104,4 @@ print("-----------------------")
 vampire1.characterInfo()
 print("-----------------------")
 vampire2.characterInfo()
-print("-----------------------")ß
+print("-----------------------")

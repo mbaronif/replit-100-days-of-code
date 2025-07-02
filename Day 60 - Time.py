@@ -6,7 +6,7 @@ print("\nWhen is the event?")
 day = int(input("Day: "))
 # Makes sure the inputed month is a valid number.
 while True:
-    month = int(input("Month: "))
+    month = int(input("Month (numbers): "))
     if month < 1 or month > 12:
         print("Invalid month. Please enter a number between 1 and 12.")
     else:
