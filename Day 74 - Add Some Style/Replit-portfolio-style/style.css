@@ -2,7 +2,7 @@ title {
     font-family: 'Franklin Gothic Medium';
 }
 
-body {
+html, body {
     background-color: bisque;
 }
 
