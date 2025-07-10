@@ -1,0 +1,35 @@
+title {
+    font-family: 'Franklin Gothic Medium';
+}
+
+html, body {
+    background-color: bisque;
+}
+
+h2, h3 {
+    color: brown;
+}
+
+p, li {
+    color: rgb(98, 26, 26);
+}
+
+img {
+    border-image: auto;
+}
+
+a {
+    color: blue;
+}
+
+a:hover {
+    color: blueviolet;
+}
+
+a:visited{
+    color: aqua;
+}
+
+.pointer {
+    cursor: pointer;
+}
